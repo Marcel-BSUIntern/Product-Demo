@@ -37,7 +37,20 @@ function ProductForm({
   };
 
   return (
-    <Dialog open={open} onClose={() => setOpen(false)}>
+    <Dialog
+      open={open}
+      onClose={() => setOpen(false)}
+      fullWidth
+      maxWidth="sm"
+      sx={{
+        "@media (max-width: 600px)": {
+          ".MuiDialog-paper": {
+            margin: "10px",
+            width: "calc(100% - 20px)",
+          },
+        },
+      }}
+    >
       <DialogTitle>
         {currentProduct.id ? "Update Product" : "Add Product"}
       </DialogTitle>
@@ -57,6 +70,8 @@ function ProductForm({
           onChange={handleChange}
           fullWidth
           margin="dense"
+          multiline
+          rows={3}
         />
         <TextField
           label="Price"
